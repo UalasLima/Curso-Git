@@ -72,7 +72,7 @@ git clone file:////NomeDoServidor/xxxx/xxxx xxxx Todos os que vão contribuir no 
 
 git remote //Comando para ver o nome do servidor remoto.
 
-git push xxxx xxxx //Comando para enviar ao servidor o commit local. O primeiro xxxx é o nome do servidor e o segundo é o nome do nosso branch.
+git push xxxx xxxx //Comando para enviar ao servidor o commit local. O primeiro xxxx é o nome do servidor e o segundo é o nome do nosso branch. Parece que é o padrão que o servidor se chame origin assim como o branch tem por padrão "master".
 
 git pull xxxx xxxx //Comando para puchar do servidor não o repositório (clone) mas para puchar as alterações que estão no servidor fazendo o margen automático com os arquivos locais. Primeiro xxxx é o nome do servidor e o segundo é nome do branch para o qual traremos as atualizações.
 
@@ -80,4 +80,6 @@ git fetch xxxx xxx //Comando similar ao pull com a diferença de que este não faz
 
 
 				GITRub
+Os comandos são os mesmos vistos para repositórios locais e de redes locais.
+
 ssh-keygen //Esse comando gera um par de chaves ssh que serão necessárias para a conexão do PC do usuário com seu repositório no git hub. Será gerado um arquivo .pub onde devemos copiar seu conteúdo e levar até nossa conta no git hub em ssh keys de settings.
