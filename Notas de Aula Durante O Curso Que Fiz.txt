@@ -1,0 +1,83 @@
+git config --global user.name "xxxx"
+git config --global user.email "xx@xx.xx"
+
+git init
+git status
+git add xxx.xx
+git add *.xx //Todos os arquivos com determinada extensão
+git add . //Todos os arquivos
+git commit -m "xxxxxxx"
+
+git commit -a -m "xxx" //Para comitar sem precisar escrever antes o comando add //Entre as aspas inserimos uma nota sobre a versão.
+
+Para fazer com que um determinado arquivo dentro do projeto não seja monitorado pelo git criamos um arquivo .gitignore e dentro do doc digitamos os arquivos e pastas que devem ser ignorados incluindo o próprio gitignore.
+
+git diff //esse comando exibirá o conteúdo de um arquivo que ainda não tenha sido adicionado a stage area. Exibirá o que já havia, o que foi removido e o que foi adcionado, vale resaltar que por padrão o git colocará a ultima linha escrita antes da alteração como removida (-- "removido em vermelho") e em seguida colocará o mesmo trecho como adcionado (++) não sei se é como se ele removesse e adcionasse ou se de fato ele faz isso, seja como for não vejo nenhum problema e vale apenas como observação desse comportamento.
+
+git diff --staged //com o acrescimo o comando diff exibe agora as alterações em um arquivo que esteja na stage area.
+
+git log //Esse comando exibe todos os commits já realizados.
+
+git log -p //Esse comando irá detalhar os commits já realizados mostrando as alterações feitas. O relatório é exibido por paginação por isso é preciso usar a tecla enter para ir mostrando o restante do conteúdo até chegar no commit inicial.
+É necessário teclar "q" para que possamos voltar a inserir comandos no terminal.
+
+git log -p -n //Como o comando visto acima podemos ter problemas já que possa ser que hajam muitos commits já realizados, acrescentando o parâmetro -n (onde n é um natural qualquer) iremos definir a quantidade de commits que desejamos puchar, se colocarmos -1 por exemplo, então teremos o relatório do último commit apenas.
+
+gitk //comando extremamente útil! Ele tambéme xibe relatórios só que dessa vez por meio de uma interface gráfica tornando a leitura mais intuitiva e produtiva.
+
+git log --pretty=oneline //Comando muito útil, ele exibirá os commits realizados cada um em linha única, simplificados, contendo apenas a chave e a anotação feita ao commitar.
+
+git commit --amend -m "xxx" //Esse comando edita o último commit realizado. Podemos editar desde a mensagem do commit até o commit em si. Quando realizamos a edição do commit ele muda de chave.
+
+git reset HEAD xxx.xx //Esse comando serve para retirar da stage area um arquivo que lá esteja.
+
+git checkout -- xxx.xx //Esse comando disfaz as alterações em um doc para o estado do útlimo commit.
+
+git rm xxx.xx //Comando para remover um arquivo do projeto.
+
+				
+				
+				TAGs GIT
+git tag -a xxx -m "xxxxxx" // Com esse comando criamos uma tag, a tag é muito util para controlarmos verssões e funciona como um ponteiro. O primeiro campo xxx é onde daremos o nome da tag e o segundo é onde faremos uma descrição dela. Fazendo a tag dessa forma ela será colocada no ultimo commit, caso se deseje por uma tag em um commit diferente deve-se entre o nome da tag e o pâramentro -m por a chave do commit.
+
+git tag //exibe as tags existentes
+
+git show xxx //Comando para exibir detalhes de uma determinada tag.
+
+git tag -d xxx //Este comando deleta uma tag.
+
+
+				BRANCH
+Banch é parecido com as tags porém é superior é como se fosse uma conta de usuário linux onde há o master que seria o root e podemos criar outros e os arquivos de um podem ter conteúdos diferente dos arquivos em outras contas. É usado para controle de versão.
+
+git chechout xxx //Comando para ir para o branch desejado
+
+git branch xxx //Cria um branch
+
+git checkout xxx //Feito após a criação de um novo branch migra os arquivos do branch atual para o ditado e o bash passa a ser operando com o branch ditado.
+
+git checkout -b xxx //Realiza os dois comando acima de uma só vez.
+
+git merge xxx //Mesclo os arquivos do branch onde estou com os do branch apontado.
+
+git branch -d xxx //Exclui um branch.
+
+
+				GIT EM SERVIDORES LOCAIS
+Além de usar git em um servidor no próprio PC de desenvolvimento podemos utilizar o git em uma rede local, útil para uma equipe de desenvolvimento de uma empresa por exemplo. A pasta onde estará hospedado o projeto não deve ser iniciada apena com o comando "git init" mas com o comando "git init --bare" assim o repositório será disponivel para todos os PCs da rede local.
+
+Os arquivos que em um repositório local ficariam dentro de uma pasta .git aqui ficam soltos diretamente dentro da pasta do projeto, isso é uma caracteristica do init --bare.
+
+git clone file:////NomeDoServidor/xxxx/xxxx xxxx Todos os que vão contribuir no projeto devem executar este comando para clonar o repositória em sua estação de trabalho. O último parametro é dispensavel sendo que ele é para substituir localmente o nome da da pasta original.
+
+git remote //Comando para ver o nome do servidor remoto.
+
+git push xxxx xxxx //Comando para enviar ao servidor o commit local. O primeiro xxxx é o nome do servidor e o segundo é o nome do nosso branch.
+
+git pull xxxx xxxx //Comando para puchar do servidor não o repositório (clone) mas para puchar as alterações que estão no servidor fazendo o margen automático com os arquivos locais. Primeiro xxxx é o nome do servidor e o segundo é nome do branch para o qual traremos as atualizações.
+
+git fetch xxxx xxx //Comando similar ao pull com a diferença de que este não faz o marge entre os arquivos baixados e os do branch local.
+
+
+				GITRub
+ssh-keygen //Esse comando gera um par de chaves ssh que serão necessárias para a conexão do PC do usuário com seu repositório no git hub. Será gerado um arquivo .pub onde devemos copiar seu conteúdo e levar até nossa conta no git hub em ssh keys de settings.
